@@ -1,7 +1,9 @@
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+dotenv.config();
 
-const url =
-  "mongodb+srv://arnia:arnia123@arnia-db.ygd6ua3.mongodb.net/?retryWrites=true&w=majority";
+const url = process.env.MONGO_URL as string;
+
 const client = new MongoClient(url);
 
 const newDb = "skate-shop";
