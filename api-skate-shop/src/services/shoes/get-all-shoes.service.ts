@@ -17,10 +17,20 @@ async function getAllShoesService(query?: any) {
       ? await shoesRepository.getAll(filter)
       : await shoesRepository.getAll();
 
+    const page = parseInt(query.page) || 1;
+    const pageSize = parseInt(query.pageSize) || 5;
+
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = page * pageSize;
+
+    const shoesPaginated = shoes.slice(startIndex, endIndex);
+
     return {
       message: "Ok.",
-      data: shoes,
+      currentPage: page,
+      totalPages: Math.ceil(shoes.length / pageSize),
       statusCode: 200,
+      data: shoesPaginated,
     };
   } catch (error) {
     return {
