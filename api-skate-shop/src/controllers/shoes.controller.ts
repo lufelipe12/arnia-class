@@ -26,10 +26,12 @@ class ShoesController {
 
     const result = await getAllShoesService(query);
 
-    const { statusCode, data, message } = result;
+    const { statusCode, data, message, currentPage, totalPages } = result;
 
     res.status(statusCode).json({
       message,
+      currentPage,
+      totalPages,
       data,
     });
   }
