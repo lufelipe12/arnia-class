@@ -13,6 +13,10 @@ class UsersRepository {
     return await User.findById(id);
   }
 
+  async findByName(name: string) {
+    return await User.findOne({ name });
+  }
+
   async updateById(id: string, payload: any) {
     return await User.findByIdAndUpdate(id, payload);
   }
