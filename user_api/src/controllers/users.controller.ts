@@ -5,8 +5,10 @@ export class UsersController {
   static async create(req: Request, res: Response) {
     const payload = req.body;
 
-    const newUser = await createUserService(payload);
+    const result = await createUserService(payload);
 
-    res.status(201).json(newUser);
+    const { message, statusCode, data } = result as any;
+
+    res.status(statusCode).json({ message, data });
   }
 }
