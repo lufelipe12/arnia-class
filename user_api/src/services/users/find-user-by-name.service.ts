@@ -17,9 +17,9 @@ export async function findUserByNameService(name: string) {
       statusCode: 200,
       data: user,
     };
-  } catch (error) {
+  } catch (error: any) {
     return {
-      message: "Internal server error.",
+      message: error.message,
       statusCode: 500,
       data: null,
     };
