@@ -14,7 +14,7 @@ class UsersRepository {
   }
 
   async findByName(name: string) {
-    return await User.findOne({ name });
+    return await User.findOne({ name }).populate("characters");
   }
 
   async updateById(id: string, payload: any) {
