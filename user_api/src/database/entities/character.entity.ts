@@ -9,7 +9,7 @@ export interface ICharacter extends Document {
 const characterSchema: Schema = new Schema({
   nickname: { type: String, required: true, unique: true },
   vocation: { type: String, required: true, minlength: 3 },
-  user: { type: mongoose.Types.ObjectId, ref: "User" },
+  user: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
 const Character = mongoose.model<ICharacter>("Character", characterSchema);

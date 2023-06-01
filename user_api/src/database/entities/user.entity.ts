@@ -15,7 +15,7 @@ const userSchema: Schema = new Schema(
     age: { type: Number, required: true, min: 18 },
     isAdmin: { type: Boolean, default: false },
     password: { type: String, required: true, minlength: 5, select: false },
-    characters: [{ type: mongoose.Types.ObjectId, ref: "Character" }],
+    characters: [{ type: Schema.Types.ObjectId, ref: "Character" }],
   },
   { timestamps: true }
 );
