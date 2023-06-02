@@ -29,8 +29,8 @@ export async function createUserService(payload: IUser) {
     }
 
     return {
-      message: "Internal server error.",
-      statusCode: 500,
+      message: error.message || "Internal server error.",
+      statusCode: error.message ? 400 : 500,
       data: null,
     };
   }

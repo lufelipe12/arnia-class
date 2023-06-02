@@ -19,8 +19,8 @@ export async function findUserByNameService(name: string) {
     };
   } catch (error: any) {
     return {
-      message: error.message,
-      statusCode: 500,
+      message: error.message || "Internal server error.",
+      statusCode: error.message ? 400 : 500,
       data: null,
     };
   }
