@@ -1,10 +1,22 @@
+import { object, string } from "yup";
+
 import { ICharacter } from "../../database/entities/character.entity";
 import { charactersRepository } from "../../database/repositories/characters.repository";
 import { usersRepository } from "../../database/repositories/users.repository";
 
+const charactersYupSchema = object({
+  vocation: string()
+    .matches(/(Sorcerer|Druid)/, {
+      message: "Just Sorcerer and Druid vocations are allowed.",
+    })
+    .required("Vocation field is required."),
+});
+
 export async function createCharacterService(payload: ICharacter) {
   try {
-    const { nickname, vocation, user } = payload;
+    await charactersYupSchema.validate(payload);
+
+    const { user } = payload;
 
     const userFound = (await usersRepository.findById(user)) as any;
 
