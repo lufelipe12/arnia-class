@@ -23,7 +23,7 @@ export async function createCharacterService(payload: ICharacter) {
     if (!userFound) {
       return {
         message: "User not found.",
-        statusCode: 400,
+        statusCode: 404,
         data: null,
       };
     }
