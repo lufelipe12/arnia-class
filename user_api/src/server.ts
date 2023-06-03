@@ -2,8 +2,6 @@ import { config } from "dotenv";
 
 import app from "./app";
 import { connectToDatabase } from "./database/config";
-import { usersRepository } from "./database/repositories/users.repository";
-import Character from "./database/entities/character.entity";
 
 config();
 
