@@ -9,8 +9,16 @@ class CharactersRepository {
     return await Character.find();
   }
 
+  async findById(id: string) {
+    return await Character.findById(id);
+  }
+
   async findByUserId(userId: string) {
     return await Character.find({ user: userId }).populate("user");
+  }
+
+  async update(id: string, payload: any) {
+    return await Character.findByIdAndUpdate(id, payload).exec();
   }
 }
 
