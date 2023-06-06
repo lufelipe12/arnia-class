@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { createCharacterService } from "../services/characters/create-character.service";
 import { findAllCharactersService } from "../services/characters/find-all-characters.service";
 import { findCharacterByUserIdService } from "../services/characters/find-characters-by-user-id.service";
+import { updateCharacterService } from "../services/characters/update-character.service";
 
 export class CharactersController {
   static async create(req: Request, res: Response) {
@@ -34,6 +35,20 @@ export class CharactersController {
     const result = await findCharacterByUserIdService(userId);
 
     const { statusCode, message, data } = result;
+
+    res.status(statusCode).json({
+      message,
+      data,
+    });
+  }
+
+  static async update(req: Request, res: Response) {
+    const payload = req.body;
+    const id = req.params.id;
+
+    const result = await updateCharacterService(id, payload);
+
+    const { message, statusCode, data } = result;
 
     res.status(statusCode).json({
       message,
