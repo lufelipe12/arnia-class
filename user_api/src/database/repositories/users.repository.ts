@@ -17,6 +17,10 @@ class UsersRepository {
     return await User.findOne({ name }).populate("characters");
   }
 
+  async findByEmail(email: string) {
+    return await User.findOne({ email }).select("+password");
+  }
+
   async updateById(id: string, payload: any) {
     return await User.findByIdAndUpdate(id, payload);
   }
