@@ -5,8 +5,10 @@ import { findCharacterByUserIdService } from "../services/characters/find-charac
 import { updateCharacterService } from "../services/characters/update-character.service";
 
 export class CharactersController {
-  static async create(req: Request, res: Response) {
-    const payload = req.body;
+  static async create(req: Request | any, res: Response) {
+    const { body, user } = req;
+
+    const payload = { ...body, userId: user.userId };
 
     const result = await createCharacterService(payload);
 
