@@ -7,8 +7,11 @@ export class AuthController {
 
     const result = await authService(email, password);
 
-    const { statusCode, data, message } = result as any;
+    const { statusCode, data, message } = result;
 
-    res.status(statusCode).json({ message, data });
+    res.status(statusCode).json({
+      message,
+      data,
+    });
   }
 }
