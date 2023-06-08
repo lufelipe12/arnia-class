@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
+import { ICharacter } from "./character.entity";
 
 export interface IUser extends Document {
   name: string;
@@ -6,6 +7,7 @@ export interface IUser extends Document {
   age: number;
   isAdmin: boolean;
   password: string;
+  characters: ICharacter[];
 }
 
 const userSchema: Schema = new Schema(
