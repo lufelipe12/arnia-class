@@ -10,7 +10,7 @@ class UsersRepository {
   }
 
   async findById(id: string) {
-    return await User.findById(id);
+    return await User.findById(id).populate("characters");
   }
 
   async findByName(name: string) {
