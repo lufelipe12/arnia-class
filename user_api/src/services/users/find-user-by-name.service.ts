@@ -1,12 +1,12 @@
 import { usersRepository } from "../../database/repositories/users.repository";
 
-export async function findUserByNameService(name: string) {
+export async function findUserByIdService(id: string) {
   try {
-    const user = await usersRepository.findByName(name);
+    const user = await usersRepository.findById(id);
 
     if (!user) {
       return {
-        message: `User with name: ${name} not found.`,
+        message: `User with name: ${id} not found.`,
         statusCode: 404,
         data: null,
       };

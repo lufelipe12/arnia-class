@@ -16,22 +16,13 @@ export async function createCharacterService(payload: ICharacter) {
   try {
     await charactersYupSchema.validate(payload);
 
-    const { user } = payload;
-
-    const userFound = (await usersRepository.findById(user)) as any;
-
-    if (!userFound) {
-      return {
-        message: "User not found.",
-        statusCode: 404,
-        data: null,
-      };
-    }
+    const { userId } = payload;
 
     const characterCreated = await charactersRepository.create(payload);
 
-    userFound.characters.push(characterCreated._id);
-    userFound.save();
+    const userFound = await usersRepository.findById(userId);
+    userFound?.characters.push(characterCreated._id);
+    userFound?.save();
 
     return {
       message: "Character created.",
