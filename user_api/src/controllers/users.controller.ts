@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
+
 import { createUserService } from "../services/users/create-user.service";
-import { findUserByIdService } from "../services/users/find-user-by-name.service";
+import { findUserByIdService } from "../services/users/find-user-by-id.service";
 import { getUsersProfileService } from "../services/users/get-user-profile.service";
 import { getAllUsersService } from "../services/users/get-all-users.service";
 
