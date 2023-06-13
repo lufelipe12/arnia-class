@@ -26,4 +26,22 @@ describe("Testing find all characters service", () => {
     expect(findMock).toHaveBeenCalled();
     expect(response).toEqual(expectedResponse);
   });
+
+  it("Handle error test.", async () => {
+    const errorMessage = "Error for test.";
+
+    const errorFindMock = jest.fn().mockRejectedValue(new Error(errorMessage));
+    charactersRepository.find = errorFindMock;
+
+    const expectedResponse = {
+      message: errorMessage,
+      statusCode: 400,
+      data: null,
+    };
+
+    const response = await findAllCharactersService();
+
+    expect(response).toEqual(expectedResponse);
+    expect(errorFindMock).toHaveBeenCalled();
+  });
 });
