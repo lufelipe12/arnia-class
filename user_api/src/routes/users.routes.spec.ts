@@ -60,14 +60,11 @@ describe("Testing users routes", () => {
   });
 
   it("GET -> /users/profile - Should get a profile by token", async () => {
-    console.log("token", token);
-
     const response = await request(app)
       .get("/users/profile")
       .set({ Authorization: `Bearer ${token}` });
 
     const profile = response.body.data;
-    console.log("profile", profile);
 
     expect(profile.email).toEqual("test12@gmail.com");
     expect(profile.isAdmin).toEqual(true);
