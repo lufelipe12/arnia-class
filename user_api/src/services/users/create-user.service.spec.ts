@@ -16,12 +16,15 @@ describe("Create user service test.", () => {
       name: "Luiz Felipe",
       email: "lf@g.com",
       age: 27,
-      password: "senha1234",
+      password: "123456",
     } as IUser;
 
-    const passwordHashed = await bcrypt.hash(payload.password, 10);
+    const passwordHashed =
+      "$2a$10$Er9Sk5JFHb6wUpf6zIN73u/K579Ftpl8syF3AgDrrUhD6i/iznPpi" as never;
 
-    (bcrypt.hash as jest.Mock).mockResolvedValue(passwordHashed);
+    const bcryptSpy = jest
+      .spyOn(bcrypt, "hash")
+      .mockResolvedValue(passwordHashed);
 
     const usersCreateRepositoryMock = jest.fn().mockResolvedValue({
       ...payload,
@@ -38,7 +41,7 @@ describe("Create user service test.", () => {
     const response = await createUserService(payload);
 
     expect(response).toEqual(expectedResult);
-    expect(bcrypt.hash).toBeCalledWith("senha1234", 10);
+    expect(bcryptSpy).toBeCalledWith("123456", 10);
     expect(usersCreateRepositoryMock).toBeCalledWith({
       ...payload,
       password: passwordHashed,
