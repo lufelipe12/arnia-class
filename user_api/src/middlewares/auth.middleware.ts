@@ -11,7 +11,7 @@ export function authMiddleware(
   const { headers } = req;
   const { authorization } = headers;
 
-  const { baseUrl } = req;
+  const { originalUrl } = req;
   const { method } = req;
 
   if (authorization) {
@@ -22,7 +22,7 @@ export function authMiddleware(
 
       const user = jwt.verify(token, secretKey) as IUser;
 
-      if (baseUrl === "/users" && method === "GET" && !user.isAdmin) {
+      if (originalUrl === "/users" && method === "GET" && !user.isAdmin) {
         return res.status(401).json({
           message: "Not suficient permissions.",
           data: null,
