@@ -3,12 +3,14 @@ import mongoose from "mongoose";
 import { config } from "dotenv";
 
 import app from "../app";
+import { IUser } from "../database/entities/user.entity";
 
 config();
 
 describe("Testing users routes", () => {
   let userId: string;
   let token: string;
+  let user: IUser;
 
   beforeAll(async () => {
     await mongoose.connect(process.env.MONGO_URL as string);
@@ -21,6 +23,7 @@ describe("Testing users routes", () => {
       isAdmin: true,
     });
 
+    user = newUser.body.data;
     userId = newUser.body.data._id;
 
     const response = await request(app).post("/auth").send({
@@ -85,5 +88,19 @@ describe("Testing users routes", () => {
     const response = await request(app).get("/users/648126bf0b0ee75372cf1761");
 
     expect(response.statusCode).toEqual(404);
+  });
+
+  it("PATCH /users - Should uptade an user and return him", async () => {
+    const response = await request(app)
+      .patch("/users")
+      .set({
+        Authorization: `Bearer ${token}`,
+      })
+      .send({
+        name: "New name for user test",
+      });
+
+    expect(response.body.data.name).toEqual("New name for user test");
+    expect(response.statusCode).toEqual(200);
   });
 });
