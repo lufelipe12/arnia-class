@@ -11,4 +11,6 @@ usersRouter.get("/", authMiddleware, UsersController.findAll);
 usersRouter.get("/profile", authMiddleware, UsersController.profile);
 usersRouter.get("/:id", UsersController.findById);
 
+usersRouter.patch("/", authMiddleware, UsersController.update);
+
 export default usersRouter;
