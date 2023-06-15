@@ -4,6 +4,7 @@ import { createUserService } from "../services/users/create-user.service";
 import { findUserByIdService } from "../services/users/find-user-by-id.service";
 import { getUsersProfileService } from "../services/users/get-user-profile.service";
 import { getAllUsersService } from "../services/users/get-all-users.service";
+import { updateUserService } from "../services/users/update-user.service";
 
 export class UsersController {
   static async create(req: Request, res: Response) {
@@ -44,6 +45,20 @@ export class UsersController {
     const { userId } = req.user;
 
     const result = await getUsersProfileService(userId);
+
+    const { statusCode, message, data } = result;
+
+    res.status(statusCode).json({
+      message,
+      data,
+    });
+  }
+
+  static async update(req: Request | any, res: Response) {
+    const { userId } = req.user;
+    const payload = req.body;
+
+    const result = await updateUserService(userId, payload);
 
     const { statusCode, message, data } = result;
 
