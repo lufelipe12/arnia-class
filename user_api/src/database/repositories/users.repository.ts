@@ -22,7 +22,7 @@ class UsersRepository {
   }
 
   async updateById(id: string, payload: any) {
-    return await User.findByIdAndUpdate(id, payload);
+    return await User.findByIdAndUpdate(id, payload, { new: true });
   }
 
   async delete(id: string) {
