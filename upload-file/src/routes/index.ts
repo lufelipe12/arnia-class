@@ -1,14 +1,14 @@
 import { Router } from "express";
 
-import { uploadMiddleware } from "../middlewares/multer.middleware";
+import { multerMiddleware } from "../middlewares/multer.middleware";
 
 const routes = Router();
 
 let users: any[] = [];
 
-// routes.use(uploadMiddleware.single("picture")) ---> forma de utilizar middleware para todas rotas desse router
+// routes.use(multerMiddleware.single("picture")) ---> forma de utilizar middleware para todas rotas desse router
 
-routes.post("/users", uploadMiddleware.single("picture"), (req, res) => {
+routes.post("/users", multerMiddleware.single("picture"), (req, res) => {
   console.log("PICTURE ---> ", req.file);
   console.log("BODY ---> ", req.body);
 
