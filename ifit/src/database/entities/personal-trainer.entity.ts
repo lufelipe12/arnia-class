@@ -7,8 +7,12 @@ const personalTrainerSchema: Schema = new Schema(
     email: { type: String, required: true, minlength: 8, unique: true },
     phoneNumber: { type: String, required: true, minlength: 8 },
     cref: { type: String, required: true, minlength: 8 },
-    sport: { type: String, required: true },
-    password: { type: String, required: true, minlength: 5 },
+    sport: {
+      type: String,
+      required: true,
+      enum: ["soccer", "volleyball", "handball", "basketball"],
+    },
+    password: { type: String, required: true, minlength: 5, select: false },
     isActive: { type: Boolean, default: true },
   },
   { timestamps: true }

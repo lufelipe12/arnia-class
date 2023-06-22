@@ -5,4 +5,6 @@ const personalTrainersRouter = Router();
 
 personalTrainersRouter.get("/", PersonalTrainersController.findAll);
 
+personalTrainersRouter.post("/", PersonalTrainersController.create);
+
 export default personalTrainersRouter;

@@ -12,9 +12,11 @@ export async function findAllPersonalTrainersService() {
       data: personalTrainers,
     };
   } catch (error: any) {
+    console.log(error);
+
     return {
-      statusCode: 500,
-      message: "Internal server error.",
+      statusCode: error.message ? 400 : 500,
+      message: error.message || "Internal server error.",
       data: null,
     };
   }
