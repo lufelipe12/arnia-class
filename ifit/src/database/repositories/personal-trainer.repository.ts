@@ -12,23 +12,27 @@ class PersonalTrainerRepository {
   }
 
   async findById(id: string) {
-    return await PersonalTrainer.findById(id);
+    return await PersonalTrainer.findOne({ _id: id, isActive: true }).exec();
   }
 
   async update(id: string, payload: IPersonalTrainerUpdate) {
-    return await PersonalTrainer.findByIdAndUpdate(id, payload, {
-      new: true,
-    });
+    return await PersonalTrainer.findOneAndUpdate(
+      { _id: id, isActive: true },
+      payload,
+      {
+        new: true,
+      }
+    ).exec();
   }
 
   async delete(id: string) {
-    return await PersonalTrainer.findByIdAndUpdate(
-      id,
+    return await PersonalTrainer.findOneAndUpdate(
+      { _id: id, isActive: true },
       { isActive: false },
       {
         new: true,
       }
-    );
+    ).exec();
   }
 }
 

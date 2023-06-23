@@ -4,7 +4,7 @@ export async function findPersonalTrainerByIdService(id: string) {
   try {
     const personalTrainer = await personalTrainerRepository.findById(id);
 
-    if (!personalTrainer || !personalTrainer.isActive) {
+    if (!personalTrainer) {
       return {
         statusCode: 404,
         message: `Personal trainer with this id: ${id} not found.`,
