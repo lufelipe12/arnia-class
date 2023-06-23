@@ -6,8 +6,8 @@ class PersonalTrainerRepository {
     return await PersonalTrainer.create(payload);
   }
 
-  async find() {
-    return await PersonalTrainer.find();
+  async find(filter?: any) {
+    return await PersonalTrainer.find(filter);
   }
 
   async findById(id: string) {

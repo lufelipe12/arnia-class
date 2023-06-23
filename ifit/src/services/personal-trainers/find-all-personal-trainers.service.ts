@@ -1,10 +1,20 @@
 import { personalTrainerRepository } from "../../database/repositories/personal-trainer.repository";
 import { IPersonalTrainer } from "../../interfaces/ipersonal-trainer.interface";
 
-export async function findAllPersonalTrainersService() {
+export async function findAllPersonalTrainersService(filter: any) {
   try {
+    const key = Object.keys(filter)[0];
+
+    if (key && key !== "sport") {
+      return {
+        statusCode: 400,
+        message: "You cant filter with this query.",
+        data: null,
+      };
+    }
+
     const personalTrainers: IPersonalTrainer[] =
-      await personalTrainerRepository.find();
+      await personalTrainerRepository.find(filter);
 
     return {
       statusCode: 200,

@@ -5,7 +5,9 @@ import { createPersonalTrainerService } from "../services/personal-trainers/crea
 
 export class PersonalTrainersController {
   static async findAll(req: Request, res: Response) {
-    const result = await findAllPersonalTrainersService();
+    const filter = req.query;
+
+    const result = await findAllPersonalTrainersService(filter);
 
     const { statusCode, message, data } = result;
 
