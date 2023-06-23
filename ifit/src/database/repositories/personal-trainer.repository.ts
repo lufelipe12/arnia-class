@@ -8,7 +8,7 @@ class PersonalTrainerRepository {
   }
 
   async find(filter?: any) {
-    return await PersonalTrainer.find(filter);
+    return await PersonalTrainer.find({ ...filter, isActive: true });
   }
 
   async findById(id: string) {
@@ -22,7 +22,13 @@ class PersonalTrainerRepository {
   }
 
   async delete(id: string) {
-    return await PersonalTrainer.deleteOne({ id });
+    return await PersonalTrainer.findByIdAndUpdate(
+      id,
+      { isActive: false },
+      {
+        new: true,
+      }
+    );
   }
 }
 

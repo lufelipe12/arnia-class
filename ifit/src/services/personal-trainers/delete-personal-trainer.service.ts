@@ -1,10 +1,10 @@
 import { personalTrainerRepository } from "../../database/repositories/personal-trainer.repository";
 
-export async function findPersonalTrainerByIdService(id: string) {
+export async function deletePersonalTrainerService(id: string) {
   try {
-    const personalTrainer = await personalTrainerRepository.findById(id);
+    const personalTrainerDeleted = await personalTrainerRepository.delete(id);
 
-    if (!personalTrainer || !personalTrainer.isActive) {
+    if (!personalTrainerDeleted) {
       return {
         statusCode: 404,
         message: `Personal trainer with this id: ${id} not found.`,
@@ -14,8 +14,8 @@ export async function findPersonalTrainerByIdService(id: string) {
 
     return {
       statusCode: 200,
-      message: "Personal trainer found.",
-      data: personalTrainer,
+      message: "Personal trainer deleted.",
+      data: personalTrainerDeleted,
     };
   } catch (error: any) {
     console.log(error);
