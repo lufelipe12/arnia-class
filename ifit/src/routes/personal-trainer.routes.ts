@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import { PersonalTrainersController } from "../controllers/personal-trainers.controller";
 
 const personalTrainersRouter = Router();

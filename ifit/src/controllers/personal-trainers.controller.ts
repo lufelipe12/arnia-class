@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import { findAllPersonalTrainersService } from "../services/personal-trainers/find-all-personal-trainers.service";
 import { createPersonalTrainerService } from "../services/personal-trainers/create-personal-trainer.service";
 

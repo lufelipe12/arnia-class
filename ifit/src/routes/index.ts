@@ -1,4 +1,5 @@
 import { Router } from "express";
+
 import personalTrainersRouter from "./personal-trainer.routes";
 
 const routes = Router();

@@ -1,11 +1,12 @@
 import mongoose, { Schema } from "mongoose";
+
 import { IPersonalTrainer } from "../../interfaces/ipersonal-trainer.interface";
 
 const personalTrainerSchema: Schema = new Schema(
   {
     name: { type: String, required: true, minlength: 3 },
     email: { type: String, required: true, minlength: 8, unique: true },
-    phoneNumber: { type: String, required: true, minlength: 8 },
+    phoneNumber: { type: String, required: true, minlength: 8, unique: true },
     cref: { type: String, required: true, minlength: 8 },
     sport: {
       type: String,
