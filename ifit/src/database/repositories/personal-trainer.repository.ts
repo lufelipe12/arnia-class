@@ -1,3 +1,4 @@
+import { IPersonalTrainerUpdate } from "../../interfaces/ipersonal-trainer-update.interface";
 import { IPersonalTrainer } from "../../interfaces/ipersonal-trainer.interface";
 import PersonalTrainer from "../entities/personal-trainer.entity";
 
@@ -14,8 +15,8 @@ class PersonalTrainerRepository {
     return await PersonalTrainer.findById(id);
   }
 
-  async update(id: string, payload: IPersonalTrainer) {
-    return await PersonalTrainer.findOneAndUpdate({ id }, payload, {
+  async update(id: string, payload: IPersonalTrainerUpdate) {
+    return await PersonalTrainer.findByIdAndUpdate(id, payload, {
       new: true,
     });
   }

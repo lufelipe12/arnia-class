@@ -9,4 +9,6 @@ personalTrainersRouter.get("/:id", PersonalTrainersController.findById);
 
 personalTrainersRouter.post("/", PersonalTrainersController.create);
 
+personalTrainersRouter.patch("/:id", PersonalTrainersController.update);
+
 export default personalTrainersRouter;

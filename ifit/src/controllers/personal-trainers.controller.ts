@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import { findAllPersonalTrainersService } from "../services/personal-trainers/find-all-personal-trainers.service";
 import { createPersonalTrainerService } from "../services/personal-trainers/create-personal-trainer.service";
 import { findPersonalTrainerByIdService } from "../services/personal-trainers/find-personal-trainer-by-id.service";
+import { IPersonalTrainerUpdate } from "../interfaces/ipersonal-trainer-update.interface";
+import { updatePersonalTrainerService } from "../services/personal-trainers/update-personal-trainer.service";
 
 export class PersonalTrainersController {
   static async findAll(req: Request, res: Response) {
@@ -35,6 +37,20 @@ export class PersonalTrainersController {
     const payload = req.body;
 
     const result = await createPersonalTrainerService(payload);
+
+    const { statusCode, message, data } = result;
+
+    res.status(statusCode).json({
+      message,
+      data,
+    });
+  }
+
+  static async update(req: Request, res: Response) {
+    const { id } = req.params;
+    const { name, cref } = req.body;
+
+    const result = await updatePersonalTrainerService(id, { name, cref });
 
     const { statusCode, message, data } = result;
 
