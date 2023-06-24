@@ -14,8 +14,16 @@ personalTrainersRouter.get(
 
 personalTrainersRouter.post("/", PersonalTrainersController.create);
 
-personalTrainersRouter.patch("/:id", PersonalTrainersController.update);
+personalTrainersRouter.patch(
+  "/:id",
+  authMiddleware,
+  PersonalTrainersController.update
+);
 
-personalTrainersRouter.delete("/:id", PersonalTrainersController.delete);
+personalTrainersRouter.delete(
+  "/:id",
+  authMiddleware,
+  PersonalTrainersController.delete
+);
 
 export default personalTrainersRouter;
