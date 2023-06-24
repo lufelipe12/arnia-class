@@ -15,6 +15,12 @@ class PersonalTrainerRepository {
     return await PersonalTrainer.findOne({ _id: id, isActive: true }).exec();
   }
 
+  async findByEmail(email: string) {
+    return await PersonalTrainer.findOne({ email, isActive: true }).select(
+      "+password"
+    );
+  }
+
   async update(id: string, payload: IPersonalTrainerUpdate) {
     return await PersonalTrainer.findOneAndUpdate(
       { _id: id, isActive: true },
