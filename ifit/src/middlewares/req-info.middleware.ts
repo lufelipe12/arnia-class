@@ -7,7 +7,6 @@ export async function reqInfoMiddleware(
 ) {
   console.log("1) INFORMATION - REQUEST METHOD:", req.method);
   console.log("2) INFORMATION - REQUEST URL:", req.url);
-
   console.log(
     "3) INFORMATION - TIME OF REQUEST:",
     new Date().toLocaleString("pt-br")
