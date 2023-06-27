@@ -7,6 +7,11 @@ const personalTrainersRouter = Router();
 
 personalTrainersRouter.get("/", PersonalTrainersController.findAll);
 personalTrainersRouter.get(
+  "/profile",
+  authMiddleware,
+  PersonalTrainersController.profile
+);
+personalTrainersRouter.get(
   "/:id",
   authMiddleware,
   PersonalTrainersController.findById

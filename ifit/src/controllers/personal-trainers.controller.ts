@@ -3,9 +3,9 @@ import { Request, Response } from "express";
 import { findAllPersonalTrainersService } from "../services/personal-trainers/find-all-personal-trainers.service";
 import { createPersonalTrainerService } from "../services/personal-trainers/create-personal-trainer.service";
 import { findPersonalTrainerByIdService } from "../services/personal-trainers/find-personal-trainer-by-id.service";
-import { IPersonalTrainerUpdate } from "../interfaces/ipersonal-trainer-update.interface";
 import { updatePersonalTrainerService } from "../services/personal-trainers/update-personal-trainer.service";
 import { deletePersonalTrainerService } from "../services/personal-trainers/delete-personal-trainer.service";
+import { getProfileService } from "../services/personal-trainers/get-profile.service";
 
 export class PersonalTrainersController {
   static async findAll(req: Request, res: Response) {
@@ -25,6 +25,19 @@ export class PersonalTrainersController {
     const { id } = req.params;
 
     const result = await findPersonalTrainerByIdService(id);
+
+    const { statusCode, message, data } = result;
+
+    res.status(statusCode).json({
+      message,
+      data,
+    });
+  }
+
+  static async profile(req: Request | any, res: Response) {
+    const { id } = req.user;
+
+    const result = await getProfileService(id);
 
     const { statusCode, message, data } = result;
 
