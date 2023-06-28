@@ -15,7 +15,10 @@ class AthletesRepository {
       _id: id,
       isActive: true,
     })
-      .populate("personaltrainer")
+      .populate({
+        path: "personalTrainerId",
+        select: ["name", "sport", "cref"],
+      })
       .exec();
   }
 

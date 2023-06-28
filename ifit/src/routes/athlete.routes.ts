@@ -7,5 +7,6 @@ const athleteRouter = Router();
 athleteRouter.post("/", authMiddleware, AthletesController.create);
 
 athleteRouter.get("/", AthletesController.find);
+athleteRouter.get("/:id", AthletesController.findById);
 
 export default athleteRouter;
