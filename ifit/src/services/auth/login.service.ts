@@ -31,8 +31,9 @@ export async function loginService(data: { email: string; password: string }) {
     }
 
     const payload = {
-      id: personalTrainer._id,
+      personalTrainerId: personalTrainer._id,
       email: personalTrainer.email,
+      personalTrainerSport: personalTrainer.sport,
     };
 
     const options = {
