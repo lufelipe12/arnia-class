@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import { loginService } from "../services/auth/login.service";
 
 export class AuthController {

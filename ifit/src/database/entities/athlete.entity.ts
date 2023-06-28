@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+
 import { IAthlete } from "../../interfaces/iathlete.interface";
 
 const athleteSchema: Schema = new Schema(
