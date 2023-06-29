@@ -11,4 +11,6 @@ athleteRouter.get("/:id", AthletesController.findById);
 
 athleteRouter.patch("/:id", authMiddleware, AthletesController.update);
 
+athleteRouter.delete("/:id", authMiddleware, AthletesController.delete);
+
 export default athleteRouter;

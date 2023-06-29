@@ -4,6 +4,7 @@ import { createAthleteService } from "../services/athletes/create-athlete.servic
 import { findAthletesService } from "../services/athletes/find-athletes.service";
 import { findAthleteByIdService } from "../services/athletes/find-athlete-by-id.service";
 import { updateAthleteService } from "../services/athletes/update-athlete.service";
+import { deleteAthleteService } from "../services/athletes/delete-athlete.service";
 
 export class AthletesController {
   static async create(req: Request | any, res: Response) {
@@ -59,6 +60,20 @@ export class AthletesController {
       { height, weight, age },
       id
     );
+
+    const { statusCode, message, data } = result;
+
+    res.status(statusCode).json({
+      message,
+      data,
+    });
+  }
+
+  static async delete(req: Request | any, res: Response) {
+    const { user } = req;
+    const { id } = req.params;
+
+    const result = await deleteAthleteService(id, user);
 
     const { statusCode, message, data } = result;
 

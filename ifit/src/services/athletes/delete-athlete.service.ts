@@ -1,13 +1,8 @@
-import { IAthleteUpdate } from "../../interfaces/iathlete-update.interface";
+import { athletesRepository } from "../../database/repositories/athletes.repository";
 import { ITokenPayload } from "../../interfaces/itoken-payload.interface";
 import { findAthleteByIdService } from "./find-athlete-by-id.service";
-import { athletesRepository } from "../../database/repositories/athletes.repository";
 
-export async function updateAthleteService(
-  user: ITokenPayload,
-  payload: IAthleteUpdate,
-  id: string
-) {
+export async function deleteAthleteService(id: string, user: ITokenPayload) {
   try {
     const responseFromService = await findAthleteByIdService(id);
 
@@ -24,17 +19,17 @@ export async function updateAthleteService(
     if (personalIdToCompare !== personalIdFromData) {
       return {
         statusCode: 401,
-        message: "You cant modify this athlete.",
+        message: "You cant delete this athlete.",
         data: null,
       };
     }
 
-    const athleteUpdated = await athletesRepository.update(id, payload);
+    const athleteDeleted = await athletesRepository.delete(id);
 
     return {
       statusCode: 200,
-      message: "Athlete updated.",
-      data: athleteUpdated,
+      message: "Athlete deleted.",
+      data: athleteDeleted,
     };
   } catch (error: any) {
     console.log(error);
