@@ -1,3 +1,4 @@
+import { IAthleteUpdate } from "../../interfaces/iathlete-update.interface";
 import { IAthlete } from "../../interfaces/iathlete.interface";
 import Athlete from "../entities/athlete.entity";
 
@@ -28,7 +29,7 @@ class AthletesRepository {
     }).exec();
   }
 
-  async update(id: string, payload: any) {
+  async update(id: string, payload: IAthleteUpdate) {
     return await Athlete.findOneAndUpdate(
       {
         _id: id,

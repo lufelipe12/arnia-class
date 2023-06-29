@@ -9,4 +9,6 @@ athleteRouter.post("/", authMiddleware, AthletesController.create);
 athleteRouter.get("/", AthletesController.find);
 athleteRouter.get("/:id", AthletesController.findById);
 
+athleteRouter.patch("/:id", authMiddleware, AthletesController.update);
+
 export default athleteRouter;
