@@ -6,6 +6,7 @@ import { findPersonalTrainerByIdService } from "../services/personal-trainers/fi
 import { updatePersonalTrainerService } from "../services/personal-trainers/update-personal-trainer.service";
 import { deletePersonalTrainerService } from "../services/personal-trainers/delete-personal-trainer.service";
 import { getProfileService } from "../services/personal-trainers/get-profile.service";
+import { findMyAthletesService } from "../services/personal-trainers/find-my-athletes.service";
 
 export class PersonalTrainersController {
   static async findAll(req: Request, res: Response) {
@@ -38,6 +39,19 @@ export class PersonalTrainersController {
     const { id } = req.user;
 
     const result = await getProfileService(id);
+
+    const { statusCode, message, data } = result;
+
+    res.status(statusCode).json({
+      message,
+      data,
+    });
+  }
+
+  static async findMyAthletes(req: Request | any, res: Response) {
+    const { user } = req;
+
+    const result = await findMyAthletesService(user.personalTrainerId);
 
     const { statusCode, message, data } = result;
 

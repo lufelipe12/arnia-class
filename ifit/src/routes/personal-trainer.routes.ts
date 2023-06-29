@@ -12,6 +12,11 @@ personalTrainersRouter.get(
   PersonalTrainersController.profile
 );
 personalTrainersRouter.get(
+  "/my-athletes",
+  authMiddleware,
+  PersonalTrainersController.findMyAthletes
+);
+personalTrainersRouter.get(
   "/:id",
   authMiddleware,
   PersonalTrainersController.findById
