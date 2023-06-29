@@ -22,6 +22,12 @@ class AthletesRepository {
       .exec();
   }
 
+  async findByPersonalId(personalTrainerId: string) {
+    return await Athlete.find({
+      personalTrainerId,
+    }).exec();
+  }
+
   async update(id: string, payload: any) {
     return await Athlete.findOneAndUpdate(
       {
