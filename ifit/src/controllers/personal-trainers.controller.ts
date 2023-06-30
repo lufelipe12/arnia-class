@@ -36,9 +36,9 @@ export class PersonalTrainersController {
   }
 
   static async profile(req: Request | any, res: Response) {
-    const { id } = req.user;
+    const { personalTrainerId } = req.user;
 
-    const result = await getProfileService(id);
+    const result = await getProfileService(personalTrainerId);
 
     const { statusCode, message, data } = result;
 

@@ -3,6 +3,7 @@ import { personalTrainerRepository } from "../../database/repositories/personal-
 export async function getProfileService(id: string) {
   try {
     const personalTrainer = await personalTrainerRepository.findById(id);
+    console.log(personalTrainer);
 
     return {
       statusCode: 200,
