@@ -49,9 +49,9 @@ export class PersonalTrainersController {
   }
 
   static async findMyAthletes(req: Request | any, res: Response) {
-    const { user } = req;
+    const { user, query } = req;
 
-    const result = await findMyAthletesService(user.personalTrainerId);
+    const result = await findMyAthletesService(user.personalTrainerId, query);
 
     const { statusCode, message, data } = result;
 
