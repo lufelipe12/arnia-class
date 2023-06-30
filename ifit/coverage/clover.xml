@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1688088357788" clover="3.2.0">
+  <project timestamp="1688088357788" name="All files">
+    <metrics statements="32" coveredstatements="21" conditionals="11" coveredconditionals="1" methods="8" coveredmethods="2" elements="51" coveredelements="24" complexity="0" loc="32" ncloc="32" packages="3" files="4" classes="4"/>
+    <package name="database.entities">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="personal-trainer.entity.ts" path="/home/pandim/Desktop/Pandim-Codes/arnia/Maio/arnia-class/ifit/src/database/entities/personal-trainer.entity.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="database.repositories">
+      <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="personal-trainer.repository.ts" path="/home/pandim/Desktop/Pandim-Codes/arnia/Maio/arnia-class/ifit/src/database/repositories/personal-trainer.repository.ts">
+        <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="services.personal-trainers">
+      <metrics statements="20" coveredstatements="15" conditionals="11" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="create-personal-trainer.service.ts" path="/home/pandim/Desktop/Pandim-Codes/arnia/Maio/arnia-class/ifit/src/services/personal-trainers/create-personal-trainer.service.ts">
+        <metrics statements="10" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="find-all-personal-trainers.service.ts" path="/home/pandim/Desktop/Pandim-Codes/arnia/Maio/arnia-class/ifit/src/services/personal-trainers/find-all-personal-trainers.service.ts">
+        <metrics statements="10" coveredstatements="7" conditionals="7" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="2"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
